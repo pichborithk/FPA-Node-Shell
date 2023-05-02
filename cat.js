@@ -1,7 +1,7 @@
 const fs = require('fs');
 
-module.exports = function (filepath) {
-  fs.readFile(filepath, 'utf8', (err, file) => {
+module.exports = function (path) {
+  fs.readFile(path, 'utf8', (err, file) => {
     if (err) {
       throw err;
     } else {

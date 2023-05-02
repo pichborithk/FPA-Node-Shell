@@ -1,12 +1,13 @@
 const pwd = require('./pwd');
 const ls = require('./ls');
 const cat = require('./cat');
+const curl = require('./curl');
 
 // Output a prompt
 process.stdout.write('prompt > ');
 
 process.stdin.on('data', data => {
-  const [cmd, filepath] = data.toString().trim().split(' ');
+  const [cmd, path] = data.toString().trim().split(' ');
 
   switch (cmd) {
     case 'pwd':
@@ -16,7 +17,11 @@ process.stdin.on('data', data => {
       ls();
       break;
     case 'cat':
-      cat(filepath);
+      cat(path);
+      break;
+    case 'curl':
+      curl(path);
+      break;
     default:
       process.stdout.write('You typed: ' + cmd);
       process.stdout.write('\nprompt > ');
